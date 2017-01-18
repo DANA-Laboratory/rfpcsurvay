@@ -1,0 +1,20 @@
+{
+  "author": {},
+  "repository": {},
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "method-override": "^2.3.7",
+    "mongodb": "^2.2.21",
+    "mongoose": "^4.7.7",
+    "morgan": "^1.7.0",
+    "pug": "^2.0.0-beta6",
+    "serve-favicon": "^2.3.2",
+    "serve-static": "^1.11.1",
+    "socket.io": "^1.7.2"
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+  "private": true,
+  "main": "server.js"
+}

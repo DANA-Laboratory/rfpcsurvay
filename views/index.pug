@@ -1,0 +1,24 @@
+doctype html
+html(lang='fa-IR', ng-app='polls', dir='rtl')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
+    title= title
+    link(href='bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='bower_components/angular/angular.min.js')
+    script(src='bower_components/angular-resource/angular-resource.min.js')
+    script(src='bower_components/angular-route/angular-route.min.js')
+    script(src='/javascripts/app.js')
+    script(src='/javascripts/services.js')
+    script(src='/javascripts/controllers.js') 
+    script(src='/socket.io/socket.io.js')             
+  body(ng-controller='PollListCtrl')
+    nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+      div.navbar-header(style='float:right')
+        a.navbar-brand(href='#!/polls')= title
+      div.navbar-header(style='float:left')
+        image(src='/logo2_00001.png' width="80" )
+    div.container
+      div(ng-view)

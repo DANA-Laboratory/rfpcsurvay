@@ -1,0 +1,43 @@
+body {
+    padding-top: 50px;
+    font-family: "B Traffic",Helvetica,Arial,sans-serif;
+}
+h1 {
+    font-family: "B Mitra";
+}
+.result-table {
+    margin: 20px 0;
+    width: 100%;
+    border-collapse: collapse;
+}
+.result-table td { padding: 8px; }
+.result-table > tbody > tr > td:first-child {
+    width: 25%;
+    max-width: 300px;
+    text-align: right;
+}
+.result-table td table {
+    background-color: lightblue;
+    text-align: right;
+}
+
+.navbar-inverse {
+    background-color: floralwhite;
+    border-color: #080808;
+}
+.navbar-brand {
+    font-family: "B Titr";
+}
+.radio {
+    margin-right: 30px;
+}
+.radio input[type="radio"] {
+    margin-right: -20px;
+}
+.result-table {
+    max-width: 200px;
+}
+.question {
+    font-size: 20px;
+    font-family: "b zar", "B Traffic", Helvetica;
+}
