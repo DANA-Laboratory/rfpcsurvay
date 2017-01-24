@@ -10,22 +10,47 @@ var Poll = db.model('polls', PollSchema);
 exports.index = function(req, res){
      res.render('index', { title: 'سامانه ارزیابی' });
 };
+exports.partials = function(req, res){
+     res.render('partials/' + req.params.page);
+};
 
-// API for clear all votes
+// API for list all votes
 exports.list = function(req, res){
 	Poll.find({}, 'question', function(error, polls){
-		res.json(polls);
+		res.json(polls.sort( { _id:1 } ));
 	});
 };
 
-// JSON API for list of polls 
-exports.list = function(req, res){
-	Poll.find({}, 'question', function(error, polls){
-		for poll in polls{
-      console.log(polls[i])
-    }
-    res.sendStatus(200)
-	});
+// API for clear all votes
+exports.clearvotes = function(req, res){
+  Poll.findById(req.params.id, function (err, poll) {  
+      if (err) {
+          res.status(500).send(err);
+      } else {
+          for(c in poll.choices){
+            if(poll.choices[c].votes)
+              if(poll.choices[c].votes.length>0) {
+                poll.choices[c].votes = [];
+                console.log(poll.choices[c]);
+              }  
+          }
+          poll.save(function (err, poll) {
+              if (err) {
+                  res.status(500).send(err)
+              }
+              res.sendStatus(200);
+          });
+      }
+  });
+};
+
+exports.removepoll = function(req, res){
+  Poll.remove({ _id: req.params.id }, function(err) {
+    if (err) {
+      console.log(err);
+    };
+    res.sendStatus(200);
+  });
 };
 
 // JSON API for getting a single poll

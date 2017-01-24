@@ -1,0 +1,28 @@
+.page-header
+  h1 ايجاد پرسش جديد
+form(role='form', ng-submit='createPoll()')
+  .form-group
+    label(for='pollQuestion') پرسش
+    |  
+    input#pollQuestion.form-control(type='text', ng-model='poll.question', placeholder='متن پرسش را وارد نماييد')
+  .form-group
+    label گزینه ها
+    div(ng-repeat='choice in poll.choices')
+      input.form-control(type='text', ng-model='choice.text', placeholder='متن گزينه {{$index+1}} را وارد نماييد')
+      br
+  .row
+    .col-xs-12
+      button.btn.btn-default(type='button', ng-click='addChoice()')
+        span.glyphicon.glyphicon-plus
+        |    افزودن دیگری
+  p
+    hr
+  .row
+    .col-xs-6
+      a.btn.btn-default(href='#!/polls', role='button')
+        span.glyphicon.glyphicon-arrow-left
+        |  بازگشت به لیست
+    .col-xs-6
+      button.btn.btn-primary.pull-right(type='submit')
+        | ذخیره پرسش &raquo;
+  p &nbsp;

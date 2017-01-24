@@ -30,7 +30,10 @@ var server = app.listen(app.get('port'), app.get('ipaddress'), function(){
     });
 // Main App Page
     app.get('/', routes.index);
+    app.get('/partials/:page', routes.partials);
 // MongoDB API Routes
+    app.get('/clearvotes/:id', routes.clearvotes);
+    app.get('/removepoll/:id', routes.removepoll);
     app.get('/polls/polls', routes.list);
     app.get('/polls/:id', routes.poll);
     app.post('/polls', routes.create);

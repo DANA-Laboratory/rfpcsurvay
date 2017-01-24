@@ -1,0 +1,23 @@
+.page-header
+  h1 پرسشنامه ارزيابي دوره از ديدگاه شرکت کنندگان
+.row
+  .col-xs-5
+    a.btn.btn-default(href='#!/new')
+      span.glyphicon.glyphicon-plus
+      |   پرسش جدید 
+  .col-xs-7
+    input.form-control(type='text', ng-model='query', placeholder='جستجو پرسش')
+.row
+  .col-xs-12
+    hr
+.row(ng-switch='', on='polls.length')
+  ul(ng-switch-when='0')
+    li
+      em
+        |پرسشی در بانگ ذخیره نشده. آیا مایل به ایجاد 
+        a(href='#!/new') یک پرسش
+        |   می باشید؟ 
+  ol(ng-switch-default='', style='font-size:18px')
+    li(ng-repeat='poll in polls | filter:query')
+      a.question(href='#!/poll/{{poll._id}}') {{poll.question}}
+p &nbsp;

@@ -1,0 +1,45 @@
+.page-header
+  h1 نمایش پرسش
+.well.well-lg
+  strong پرسش:
+  br
+  | {{poll.question}}
+div(ng-hide='poll.userVoted')
+  p.lead لطفا از بین گزینه ها انتخاب نمایید:
+  form(role='form', ng-submit='vote()')
+    .radio(ng-repeat='choice in poll.choices')
+      label
+        input(type='radio', name='choice', ng-model='poll.userVote', value='{{choice._id}}')
+        |  {{choice.text}}
+    p
+      hr
+    .row
+      .col-xs-6
+        a.btn.btn-default(href='#!/polls', role='button')
+          span.glyphicon.glyphicon-arrow-left
+          | بازگشت به لیست 
+      .col-xs-6
+        button.btn.btn-primary.pull-right(type='submit')
+          | انتخاب &raquo;
+div(ng-show='poll.userVoted')
+  table.result-table
+    tr(ng-repeat='choice in poll.choices')
+      td {{choice.text}}
+      td
+        table(style='background-color: lightblue; width: {{choice.votes.length/poll.totalVotes*100}}%; text-align: right')
+          tr
+            td {{choice.votes.length}}
+  p
+    em
+      | آراء اخذ شده تا این لحظه: {{poll.totalVotes}} عدد.
+      span(ng-show='poll.userChoice')
+        | گزینه ی شما:   
+        strong {{poll.userChoice.text}}
+        |  .
+  p
+    hr
+  p
+    a.btn.btn-default(href='#/polls', role='button')
+      span.glyphicon.glyphicon-arrow-left
+      | بازگشت به لیست 
+p &nbsp;
